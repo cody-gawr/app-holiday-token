@@ -337,7 +337,7 @@
 <script>
   import { Tooltip } from 'element-ui'
   export default {
-    layout: 'HolidayAuthLayout',
+    layout: 'AuthLayout',
     name: 'home-page',
     components: {
       [Tooltip.name]: Tooltip
