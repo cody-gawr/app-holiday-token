@@ -7,9 +7,9 @@
           <div class="row align-items-center">
             <div class="col-lg-6">
               <div class="pr-5">
-                <h1 class="display-2 text-white font-weight-bold mb-0">Argon Dashboard PRO</h1>
-                <h2 class="display-4 text-white font-weight-light">A beautiful premium dashboard for Bootstrap 4.</h2>
-                <p class="text-white mt-4">Argon perfectly combines reusable HTML and modular CSS with a modern styling and beautiful markup throughout each HTML template in the pack.</p>
+                <h1 class="display-2 text-white font-weight-bold mb-0">Holiday Token Dashboard PRO</h1>
+                <h2 class="display-4 text-white font-weight-light">A beautiful premium dashboard for a Trading.</h2>
+                <p class="text-white mt-4">Holiday perfectly combines reusable HTML and modular CSS with a modern styling and beautiful markup throughout each HTML template in the pack.</p>
                 <div class="mt-5">
                   <nuxt-link to="/earnings" class="btn btn-neutral my-2">Explore Dashboard</nuxt-link>
                   <a href="https://www.creative-tim.com/product/nuxt-argon-dashboard-pro" class="btn btn-default my-2">Purchase now</a>
@@ -73,10 +73,10 @@
     <section class="py-6 pb-9 bg-default">
       <div class="row justify-content-center text-center">
         <div class="col-md-6">
-          <h2 class="display-3 text-white">A complete HTML solution</h2>
+          <h2 class="display-3 text-white">A complete DAPP solution</h2>
           <p class="lead text-white">
-            Argon is a completly new product built on our newest re-built from scratch framework structure that is meant to make our products more intuitive,
-            more adaptive and, needless to say, so much easier to customize. Let Argon amaze you with its cool features and build tools and get your project to a whole new level.
+            Holiday is a completly new product built on our newest re-built from scratch framework structure that is meant to make our products more intuitive,
+            more adaptive and, needless to say, so much easier to customize. Let Holiday amaze you with its cool features and build tools and get your project to a whole new level.
           </p>
         </div>
       </div>
