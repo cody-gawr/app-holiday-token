@@ -60,7 +60,9 @@ module.exports = {
   plugins: [
     '~/plugins/dashboard/dashboard-plugin',
     {src: '~/plugins/dashboard/full-calendar', ssr: false },
-    {src: '~/plugins/dashboard/world-map', ssr: false },
+    { src: '~/plugins/dashboard/world-map', ssr: false },
+    { src: "~/plugins/dashboard/repositories.js", ssr: true },
+    { src: "~/plugins/dashboard/persisted-state.client.js", ssr: false },
   ],
 
   /*
