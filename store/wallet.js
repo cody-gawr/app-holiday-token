@@ -1,22 +1,27 @@
 export const state = () => ({
-  onboard: null
+  providerName: null,
+  address: null
 });
 
 export const mutations = {
-  SET_ONBOARD(state, value) {
-    state.onboard = value;
+  SET_ADDRESS(state, address) {
+    state.address = address;
+  },
+  SET_PROVIDER_NAME(state, providerName) {
+    state.providerName = providerName;
   }
 };
 
 export const actions = {
-  async setOnboard({ commit }, onboard) {
-    await commit("SET_ONBOARD", onboard);
+  async setAddress({ commit }, address) {
+    await commit("SET_ADDRESS", address);
+  },
+
+  async setProviderName({ commit }, providerName) {
+    await commit("SET_PROVIDER_NAME", providerName);
   }
 };
 
 export const getters = {
-  getOnboardState(state) {
-    const onboard = state.onboard;
-    return onboard === null ? null : onboard.getState();
-  },
+
 };

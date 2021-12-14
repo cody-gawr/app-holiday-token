@@ -9,7 +9,7 @@
               <h1 class="text-white">Ooops!</h1>
               <p class="text-lead text-white">Page not found. Don't worry though, we have plenty of other pages to explore</p>
 
-              <nuxt-link to="/dashboard" class="font-weight-bold text-white mt-5">Back to dashboard</nuxt-link>
+              <nuxt-link to="/earnings" class="font-weight-bold text-white mt-5">Back to dashboard</nuxt-link>
             </div>
           </div>
         </div>
@@ -42,6 +42,6 @@
 
 <script>
 export default {
-  layout: 'AuthLayout'
+  layout: 'HolidayAuthLayout'
 }
 </script>

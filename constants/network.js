@@ -1,4 +1,4 @@
-export const NETWORK_ID = {
+export const NETWORK_IDS = {
   ethereum: 1,
   ropsten: 3,
   rinkeby: 4,

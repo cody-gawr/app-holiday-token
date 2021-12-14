@@ -4,7 +4,9 @@ export default ({ store }) => {
   createPersistedState({
     key: 'vuex',
     paths: [
-      'wallet.onboard'
-    ]
+      'wallet.address',
+      'wallet.providerName'
+    ],
+    storage: window.sessionStorage
   })(store);
 }

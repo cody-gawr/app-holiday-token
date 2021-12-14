@@ -126,7 +126,9 @@
       </base-dropdown>
     </ul>
     <ul class="navbar-nav align-items-center ml-auto ml-md-0">
-      <base-button size="sm" type="neutral">Connect to a wallet</base-button>
+      <base-button size="sm" type="neutral" @click="onConnectWallet">
+        {{ shortenedAddress ? shortenedAddress : "Connect to a wallet" }}
+      </base-button>
       <base-dropdown menu-on-right
                      class="nav-item"
                      tag="li"
@@ -176,53 +178,76 @@
   </base-nav>
 </template>
 <script>
-  import { CollapseTransition } from 'vue2-transitions';
-  import BaseNav from '@/components/argon-core/Navbar/BaseNav.vue';
-  import Modal from '@/components/argon-core/Modal.vue';
+import { createNamespacedHelpers } from "vuex";
+import { CollapseTransition } from 'vue2-transitions';
+import BaseNav from '@/components/argon-core/Navbar/BaseNav.vue';
+import Modal from '@/components/argon-core/Modal.vue';
+import util from '~/helpers/util';
 
-  export default {
-    components: {
-      CollapseTransition,
-      BaseNav,
-      Modal
+const {
+  mapActions: walletActions,
+  mapState: walletState
+} = createNamespacedHelpers("wallet");
+
+export default {
+  components: {
+    CollapseTransition,
+    BaseNav,
+    Modal
+  },
+  props: {
+    type: {
+      type: String,
+      default: 'default', // default|light
+      description: 'Look of the dashboard navbar. Default (Green) or light (gray)'
+    }
+  },
+  computed: {
+    ...walletState([
+      "address"
+    ]),
+    routeName() {
+      const { name } = this.$route;
+      return this.capitalizeFirstLetter(name);
     },
-    props: {
-      type: {
-        type: String,
-        default: 'default', // default|light
-        description: 'Look of the dashboard navbar. Default (Green) or light (gray)'
-      }
+    shortenedAddress() {
+      return this.address ? util.getShortenedAddress(this.address) : null;
+    }
+  },
+  data() {
+    return {
+      activeNotifications: false,
+      showMenu: false,
+      searchModalVisible: false,
+      searchQuery: ''
+    };
+  },
+  methods: {
+    ...walletActions([
+      "setAddress"
+    ]),
+    capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
     },
-    computed: {
-      routeName() {
-        const { name } = this.$route;
-        return this.capitalizeFirstLetter(name);
-      }
+    toggleNotificationDropDown() {
+      this.activeNotifications = !this.activeNotifications;
     },
-    data() {
-      return {
-        activeNotifications: false,
-        showMenu: false,
-        searchModalVisible: false,
-        searchQuery: ''
-      };
+    closeDropDown() {
+      this.activeNotifications = false;
     },
-    methods: {
-      capitalizeFirstLetter(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-      },
-      toggleNotificationDropDown() {
-        this.activeNotifications = !this.activeNotifications;
-      },
-      closeDropDown() {
-        this.activeNotifications = false;
-      },
-      toggleSidebar() {
-        this.$sidebar.displaySidebar(!this.$sidebar.showSidebar);
-      },
-      hideSidebar() {
-        this.$sidebar.displaySidebar(false);
+    toggleSidebar() {
+      this.$sidebar.displaySidebar(!this.$sidebar.showSidebar);
+    },
+    hideSidebar() {
+      this.$sidebar.displaySidebar(false);
+    },
+    async onConnectWallet() {
+      const isConnected = await this.$repositories.web3.isConnected();
+      if (this.address === null || !isConnected) {
+        const state = await this.$repositories.blocknative.getOnboardStateOrResetIfNeeded(true);
+        await this.setAddress(state.address);
       }
     }
-  };
+  }
+};
 </script>
