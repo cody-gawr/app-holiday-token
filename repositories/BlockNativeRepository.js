@@ -60,7 +60,7 @@ export default ($store) => ({
    * @param {String | null} providerName
    * @param {String} networkName
    */
-  async getOnboardStateOrResetIfNeeded(reset = false, providerName = null, networkName = "ethereum") {
+  async getOnboardStateOrResetIfNeeded(reset = false, providerName = null, networkName = "bsc") {
     const onboard = this.getOnboard(networkName);
     let state = onboard.getState();
 
